@@ -1,18 +1,17 @@
 import React from 'react';
 import {Redirect} from 'react-router';
-
-
-/*global FB*/
+import initializeFb from './utils/initializeFb';
 
 export default class FbLogin extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            login: false
+            loggedIn: false
         }
-        var x = this;
-        window.fbAsyncInit = function() {
+        
+        initializeFb(this);
+        /*window.fbAsyncInit = function() {
             FB.init({
                 appId            : '300039560455517',
                 autoLogAppEvents : true,
@@ -34,7 +33,7 @@ export default class FbLogin extends React.Component {
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        }(document, 'script', 'facebook-jssdk'));*/
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -46,9 +45,7 @@ export default class FbLogin extends React.Component {
         console.log('login attempt');
         //this.setState({login: true});
         console.log(typeof this.fb);
-        /*this.fb.getLoginStatus(function(response) {
-            console.log(response.status);
-        });*/
+        
         this.fb.login(function(response) {
             if(response.authResponse) {
                 console.log('Welcome');
