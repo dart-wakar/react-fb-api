@@ -7,7 +7,8 @@ export default class FbLogin extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loggedIn: false
+            loggedIn: false,
+            fbInitialized: false
         }
         
         initializeFb(this);
@@ -59,8 +60,13 @@ export default class FbLogin extends React.Component {
         if(this.state.login === true) {
             return <Redirect push to="/home" />;
         }
-        return(
+        if(this.state.fbInitialized === true) {
+            return(
                 <button onClick={this.handleClick}>Login with Facebook</button>
-        )
+            );
+        }
+        return (
+            <div>Loading...</div>
+        );
     }
 }

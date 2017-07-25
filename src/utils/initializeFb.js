@@ -11,6 +11,7 @@ export default function initializeFb(initClass) {
             });
             FB.AppEvents.logPageView();
             initClass.fb = FB;
+            initClass.setState({fbInitialized: true});
         };
 
         (function(d, s, id){
