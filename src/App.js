@@ -8,7 +8,8 @@ import './App.css';
 //import FbComments from './FbComments';
 //import FbSend from './FbSend';
 //import FbSave from './FbSave';
-import FbQuote from './FbQuote';
+//import FbQuote from './FbQuote';
+import FbPage from './FbPage';
 
 class App extends Component {
 
@@ -30,7 +31,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Facebook follow</h1>
-        <FbQuote appId='300039560455517' apiVersion='v2.9' urI='https://www.instagram.com/facebook/'/>
+        <FbPage appId='300039560455517' apiVersion='v2.9' urL='https://www.facebook.com/facebook'/>
       </div>
     );
   }
