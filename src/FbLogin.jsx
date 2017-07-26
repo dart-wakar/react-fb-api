@@ -2,6 +2,7 @@ import React from 'react';
 import {Redirect} from 'react-router';
 import PropTypes from 'prop-types';
 import initializeFb from './utils/initializeFb';
+import setLoginOptions from './utils/setLoginOptions';
 
 const propTypes = {
     appId: PropTypes.string.isRequired,
@@ -25,6 +26,7 @@ export default class FbLogin extends React.Component {
     }
 
     componentDidMount() {
+        this.loginOptions = setLoginOptions(this.props);
         initializeFb(this,this.props.appId,this.props.apiVersion);
     }
 
@@ -40,7 +42,7 @@ export default class FbLogin extends React.Component {
             } else {
                 console.log('nono');
             }
-        });
+        },this.loginOptions);
     }
 
     render() {
