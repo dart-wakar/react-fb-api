@@ -1,5 +1,4 @@
 import React from 'react';
-import {Redirect} from 'react-router';
 import PropTypes from 'prop-types';
 import initializeFb from './utils/initializeFb';
 import setLoginOptions from './utils/setLoginOptions';
@@ -32,13 +31,12 @@ export default class FbLogin extends React.Component {
 
     handleClick() {
         console.log('login attempt');
-        //this.setState({login: true});
-        console.log(typeof this.fb);
         var x = this;
         this.fb.login(function(response) {
             if(response.authResponse) {
-                console.log('Welcome');
+                console.log(response);
                 x.setState({login: true});
+                x.props.onLoginSuccessful(response);
             } else {
                 console.log('nono');
             }
@@ -46,9 +44,6 @@ export default class FbLogin extends React.Component {
     }
 
     render() {
-        if(this.state.login === true) {
-            return <Redirect push to="/home" />;
-        }
         if(this.state.fbInitialized === true) {
             return(
                 <button onClick={this.handleClick}>Login with Facebook</button>
