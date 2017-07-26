@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Facebook login</h1>
-        <FbLogin />
+        <FbLogin appId='300039560455517' apiVersion='v2.9'/>
       </div>
     );
   }

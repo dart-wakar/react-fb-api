@@ -1,6 +1,17 @@
 import React from 'react';
 import {Redirect} from 'react-router';
+import PropTypes from 'prop-types';
 import initializeFb from './utils/initializeFb';
+
+const propTypes = {
+    appId: PropTypes.string.isRequired,
+    apiVersion: PropTypes.string.isRequired,
+    authType: PropTypes.oneOf(['rerequest']),
+    scope: PropTypes.string,
+    returnScopes: PropTypes.bool,
+    enableProfileSelector: PropTypes.bool,
+    profileSelectorIds: PropTypes.string
+}
 
 export default class FbLogin extends React.Component {
 
@@ -9,51 +20,27 @@ export default class FbLogin extends React.Component {
         this.state = {
             loggedIn: false,
             fbInitialized: false
-        }
-        
-        initializeFb(this);
-        /*window.fbAsyncInit = function() {
-            FB.init({
-                appId            : '300039560455517',
-                autoLogAppEvents : true,
-                xfbml            : true,
-                version          : 'v2.9'
-            });
-            FB.AppEvents.logPageView();
-            x.fb = FB;
-            console.log(x);
-            console.log(typeof x.fb);
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                console.log('stop');
-                return;
-            }
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));*/
+        }       
         this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
-        
+        initializeFb(this,this.props.appId,this.props.apiVersion);
     }
 
     handleClick() {
         console.log('login attempt');
         //this.setState({login: true});
         console.log(typeof this.fb);
-        
+        var x = this;
         this.fb.login(function(response) {
             if(response.authResponse) {
                 console.log('Welcome');
+                x.setState({login: true});
             } else {
                 console.log('nono');
             }
-        },{scope: 'email,public_profile'})
+        });
     }
 
     render() {
@@ -70,3 +57,5 @@ export default class FbLogin extends React.Component {
         );
     }
 }
+
+FbLogin.propTypes = propTypes;

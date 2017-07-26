@@ -1,13 +1,13 @@
 /*global FB*/
 
-export default function initializeFb(initClass) {
+export default function initializeFb(initClass,appId,apiVersion) {
     var fb;
     window.fbAsyncInit = function() {
             FB.init({
-                appId            : '300039560455517',
+                appId            : appId,
                 autoLogAppEvents : true,
                 xfbml            : true,
-                version          : 'v2.9'
+                version          : apiVersion
             });
             FB.AppEvents.logPageView();
             initClass.fb = FB;
