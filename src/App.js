@@ -5,7 +5,8 @@ import './App.css';
 //import FbLike from './FbLike';
 //import FbShare from './FbShare';
 //import FbFollow from './FbFollow';
-import FbComments from './FbComments';
+//import FbComments from './FbComments';
+import FbSend from './FbSend';
 
 class App extends Component {
 
@@ -27,7 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Facebook follow</h1>
-        <FbComments appId='300039560455517' apiVersion='v2.9' urL='https://www.facebook.com/zuck'/>
+        <FbSend appId='300039560455517' apiVersion='v2.9' urL='https://www.facebook.com/zuck'/>
       </div>
     );
   }
