@@ -10,6 +10,7 @@ export default function initializeFb(initClass,appId,apiVersion) {
                 version          : apiVersion
             });
             FB.AppEvents.logPageView();
+            window.FB = FB;
             initClass.fb = FB;
             initClass.setState({fbInitialized: true});
         };

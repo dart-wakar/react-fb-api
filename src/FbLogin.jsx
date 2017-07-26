@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Redirect} from 'react-router';
 import initializeFb from './utils/initializeFb';
 import setLoginOptions from './utils/setLoginOptions';
 
 const propTypes = {
     appId: PropTypes.string.isRequired,
     apiVersion: PropTypes.string.isRequired,
+    onLoginSuccessful: PropTypes.func.isRequired,
     authType: PropTypes.oneOf(['rerequest']),
     scope: PropTypes.string,
     returnScopes: PropTypes.bool,
@@ -22,6 +24,7 @@ export default class FbLogin extends React.Component {
             fbInitialized: false
         }       
         this.handleClick = this.handleClick.bind(this);
+        this.getUserProfile = this.getUserProfile.bind(this);
     }
 
     componentDidMount() {
@@ -35,7 +38,8 @@ export default class FbLogin extends React.Component {
         this.fb.login(function(response) {
             if(response.authResponse) {
                 console.log(response);
-                x.setState({login: true});
+                x.setState({loggedIn: true});
+                x.getUserProfile();
                 x.props.onLoginSuccessful(response);
             } else {
                 console.log('nono');
@@ -43,8 +47,18 @@ export default class FbLogin extends React.Component {
         },this.loginOptions);
     }
 
+    getUserProfile() {
+        this.fb.api('/me',function(response) {
+            console.log(response);
+        });
+    }
+
     render() {
+        if(this.state.loggedIn === true) {
+            return <Redirect push to='/home'/>;
+        }
         if(this.state.fbInitialized === true) {
+            console.log(this.fb);
             return(
                 <button onClick={this.handleClick}>Login with Facebook</button>
             );
