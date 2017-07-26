@@ -11,7 +11,8 @@ import './App.css';
 //import FbQuote from './FbQuote';
 //import FbPage from './FbPage';
 //import FbEmbeddedComments from './FbEmbeddedComments';
-import FbEmbeddedPost from './FbEmbeddedPost';
+//import FbEmbeddedPost from './FbEmbeddedPost';
+import FbEmbeddedVideo from './FbEmbeddedVideo';
 
 class App extends Component {
 
@@ -33,7 +34,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Facebook follow</h1>
-        <FbEmbeddedPost appId='300039560455517' apiVersion='v2.9' urL='https://www.facebook.com/20531316728/posts/10154009990506729/'/>
+        <FbEmbeddedVideo appId='300039560455517' apiVersion='v2.9' urL='https://www.facebook.com/facebook/videos/10153231379946729/'/>
       </div>
     );
   }
