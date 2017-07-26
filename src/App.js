@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import FbLogin from './FbLogin';
-import FbLike from './FbLike';
+//import FbLogin from './FbLogin';
+//import FbLike from './FbLike';
+import FbShare from './FbShare';
 
 class App extends Component {
 
@@ -24,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Facebook like</h1>
-        <FbLike appId='300039560455517' apiVersion='v2.9' colorScheme='light' urL='https://developers.facebook.com/docs/plugins/'/>
+        <FbShare appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/'/>
       </div>
     );
   }

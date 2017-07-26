@@ -8,7 +8,7 @@ const classname = "fb-like";
 const propTypes = {
     appId: PropTypes.string.isRequired,
     apiVersion: PropTypes.string.isRequired,
-    urL: PropTypes.string.isRequired,
+    urL: PropTypes.string,
     action: PropTypes.oneOf(['like','recommend']),
     layout: PropTypes.oneOf(['standard','box_count','button_count','button']),
     colorScheme: PropTypes.oneOf(['light','dark']),
