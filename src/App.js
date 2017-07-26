@@ -10,7 +10,8 @@ import './App.css';
 //import FbSave from './FbSave';
 //import FbQuote from './FbQuote';
 //import FbPage from './FbPage';
-import FbEmbeddedComments from './FbEmbeddedComments';
+//import FbEmbeddedComments from './FbEmbeddedComments';
+import FbEmbeddedPost from './FbEmbeddedPost';
 
 class App extends Component {
 
@@ -32,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Facebook follow</h1>
-        <FbEmbeddedComments appId='300039560455517' apiVersion='v2.9' urL='https://www.facebook.com/zuck/posts/10102577175875681?comment_id=1193531464007751&reply_comment_id=654912701278942'/>
+        <FbEmbeddedPost appId='300039560455517' apiVersion='v2.9' urL='https://www.facebook.com/20531316728/posts/10154009990506729/'/>
       </div>
     );
   }
