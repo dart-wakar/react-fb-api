@@ -12,7 +12,8 @@ const propTypes = {
     colorScheme: PropTypes.oneOf(['light','dark']),
     numPosts: PropTypes.number,
     orderBy: PropTypes.oneOf(['social','reverse_time','time']),
-    width: PropTypes.any
+    width: PropTypes.any,
+    isNotChild: PropTypes.bool
 };
 
 const defaultProps = {
@@ -22,7 +23,8 @@ const defaultProps = {
     colorScheme: 'light',
     numPosts: 10,
     orderBy: 'social',
-    width: 550
+    width: 550,
+    isNotChild: true
 };
 
 export default class FbComments extends React.Component {
@@ -38,10 +40,8 @@ export default class FbComments extends React.Component {
         if(this.props.isNotChild) {
             initializeFb(this,this.props.appId,this.props.apiVersion);
             this.setState({fbInitialized: true});
-            console.log('hehe')
         }
-        this.fb = window.FB
-        console.log(this.fb)
+        this.fb = window.FB;
     }
 
     render() {

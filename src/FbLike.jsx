@@ -16,7 +16,8 @@ const propTypes = {
     reference: PropTypes.string,
     share: PropTypes.bool,
     showFaces: PropTypes.bool,
-    size: PropTypes.oneOf(['large','small'])
+    size: PropTypes.oneOf(['large','small']),
+    isNotChild: PropTypes.bool
 };
 
 const defaultProps = {
@@ -30,7 +31,8 @@ const defaultProps = {
     reference: null,
     share: false,
     size: 'small',
-    showFaces: true
+    showFaces: true,
+    isNotChild: true
 };
 
 export default class FbLike extends React.Component {
@@ -46,15 +48,12 @@ export default class FbLike extends React.Component {
         if(this.props.isNotChild) {
             initializeFb(this,this.props.appId,this.props.apiVersion);
             this.setState({fbInitialized: true});
-            console.log('hehe')
         }
-        this.fb = window.FB
-        console.log(this.fb)
+        this.fb = window.FB;
     }
 
     render() {
         if ((this.props.isNotChild === false) || this.state.fbInitialized) {
-            console.log(this.fb);
             return (
                 <div className={classname}
                     data-href={this.props.urL}
