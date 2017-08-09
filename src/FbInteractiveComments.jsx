@@ -1,9 +1,29 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import FbComments from './FbComments';
 
 import initializeFb from './utils/initializeFb';
+
+const propTypes = {
+    appId: PropTypes.string.isRequired,
+    apiVersion: PropTypes.string.isRequired,
+    urL: PropTypes.string,
+    onFinishedRendering: PropTypes.func,
+    onCommentCreate: PropTypes.func,
+    onCommentRemove: PropTypes.func,
+    isNotChild: PropTypes.bool
+};
+
+const defaultProps = {
+    appId: null,
+    apiVersion: null,
+    urL: null,
+    onFinishedRendering() {},
+    onCommentCreate() {},
+    onCommentRemove() {},
+    isNotChild: true
+};
 
 export default class FbInteractiveComments extends React.Component {
 
@@ -52,3 +72,6 @@ export default class FbInteractiveComments extends React.Component {
     }
 
 }
+
+FbInteractiveComments.propTypes = propTypes;
+FbInteractiveComments.defaultProps = defaultProps;
