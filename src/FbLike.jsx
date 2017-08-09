@@ -43,15 +43,17 @@ export default class FbLike extends React.Component {
     }
 
     componentDidMount() {
-        initializeFb(this,this.props.appId,this.props.apiVersion);
-        this.fb = window.FB;
-        if(this.fb) {
+        if(this.props.isNotChild) {
+            initializeFb(this,this.props.appId,this.props.apiVersion);
             this.setState({fbInitialized: true});
+            console.log('hehe')
         }
+        this.fb = window.FB
+        console.log(this.fb)
     }
 
     render() {
-        if (this.state.fbInitialized) {
+        if ((this.props.isNotChild === false) || this.state.fbInitialized) {
             console.log(this.fb);
             return (
                 <div className={classname}

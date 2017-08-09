@@ -13,7 +13,8 @@ import './App.css';
 //import FbEmbeddedComments from './FbEmbeddedComments';
 //import FbEmbeddedPost from './FbEmbeddedPost';
 //import FbEmbeddedVideo from './FbEmbeddedVideo';
-import FbInteractiveComments from './FbInteractiveComments';
+//import FbInteractiveComments from './FbInteractiveComments';
+import FbInteractiveLike from './FbInteractiveLike';
 
 class App extends Component {
 
@@ -24,8 +25,8 @@ class App extends Component {
     }
     this.loggedIn = this.loggedIn.bind(this);
     this.onFinishedRendering = this.onFinishedRendering.bind(this);
-    this.onCommentCreate = this.onCommentCreate.bind(this);
-    this.onCommentRemove = this.onCommentRemove.bind(this);
+    this.onLikeSuccessful = this.onLikeSuccessful.bind(this);
+    this.onUnlikeSuccessful = this.onUnlikeSuccessful.bind(this);
   }
 
   loggedIn(res) {
@@ -38,21 +39,23 @@ class App extends Component {
     console.log('finished rendering')
   }
 
-  onCommentCreate(res) {
-    console.log('comment created');
-    console.log(res.message)
+  onLikeSuccessful(uRL,htmlElement) {
+    console.log('liked');
+    console.log(uRL);
+    console.log(htmlElement);
   }
 
-  onCommentRemove(res) {
-    console.log('comment removed')
-    console.log(res)
+  onUnlikeSuccessful(uRL,htmlElement) {
+    console.log('unliked')
+    console.log(uRL);
+    console.log(htmlElement);
   }
 
   render() {
     return (
       <div className="App">
         <h1>Facebook follow</h1>
-        <FbInteractiveComments isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/comments#configurator' onFinishedRendering={this.onFinishedRendering} onCommentCreate={this.onCommentCreate} onCommentRemove={this.onCommentRemove}/>
+        <FbInteractiveLike isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/' onFinishedRendering={this.onFinishedRendering} onLikeSuccessful={this.onLikeSuccessful} onUnlikeSuccessful={this.onUnlikeSuccessful}/>
       </div>
     );
   }
