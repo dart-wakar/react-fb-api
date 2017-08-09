@@ -12,13 +12,22 @@ export default function initializeFb(initClass,appId,apiVersion) {
             FB.AppEvents.logPageView();
             window.FB = FB;
             initClass.fb = FB;
-            initClass.setState({fbInitialized: true});
+            if(initClass.props.isNotChild) {
+                initClass.setState({fbInitialized: true});
+                console.log(initClass)
+            }
         };
 
         (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {
-                console.log('stop');
+                console.log('stop',initClass);
+                window.FB = FB;
+                initClass.fb = FB;
+                if(initClass.props.isNotChild) {
+                    initClass.setState({fbInitialized: true});
+                    console.log(initClass)
+                }
                 return;
             }
             js = d.createElement(s); js.id = id;

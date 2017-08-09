@@ -35,15 +35,17 @@ export default class FbComments extends React.Component {
     }
 
     componentDidMount() {
-        initializeFb(this,this.props.appId,this.props.apiVersion);
-        this.fb = window.FB;
-        if(this.fb) {
+        if(this.props.isNotChild) {
+            initializeFb(this,this.props.appId,this.props.apiVersion);
             this.setState({fbInitialized: true});
+            console.log('hehe')
         }
+        this.fb = window.FB
+        console.log(this.fb)
     }
 
     render() {
-        if(this.state.fbInitialized) {
+        if((this.props.isNotChild === false) || this.state.fbInitialized) {
             return (
                 <div className={className}
                     data-href={this.props.urL}

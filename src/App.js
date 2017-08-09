@@ -12,7 +12,8 @@ import './App.css';
 //import FbPage from './FbPage';
 //import FbEmbeddedComments from './FbEmbeddedComments';
 //import FbEmbeddedPost from './FbEmbeddedPost';
-import FbEmbeddedVideo from './FbEmbeddedVideo';
+//import FbEmbeddedVideo from './FbEmbeddedVideo';
+import FbInteractiveComments from './FbInteractiveComments';
 
 class App extends Component {
 
@@ -34,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Facebook follow</h1>
-        <FbEmbeddedVideo appId='300039560455517' apiVersion='v2.9' urL='https://www.facebook.com/facebook/videos/10153231379946729/'/>
+        <FbInteractiveComments isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/comments#configurator'/>
       </div>
     );
   }
