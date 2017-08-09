@@ -28,13 +28,13 @@ export default class FbInteractiveComments extends React.Component {
 
     commentCreate(response) {
         console.log('comment_create');
-        console.log(response)
-        this.props.onCommentCreate();
+        console.log(response);
+        this.props.onCommentCreate(response);
     }
 
-    commentRemove() {
+    commentRemove(response) {
         console.log('comment_remove');
-        this.props.onCommentRemove();
+        this.props.onCommentRemove(response);
     }
 
     render() {
