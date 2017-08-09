@@ -26,8 +26,9 @@ export default class FbInteractiveComments extends React.Component {
         this.props.onFinishedRendering();
     }
 
-    commentCreate() {
+    commentCreate(response) {
         console.log('comment_create');
+        console.log(response)
         this.props.onCommentCreate();
     }
 

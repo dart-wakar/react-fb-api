@@ -38,12 +38,14 @@ class App extends Component {
     console.log('finished rendering')
   }
 
-  onCommentCreate() {
+  onCommentCreate(res) {
     console.log('comment created');
+    console.log(res.message)
   }
 
-  onCommentRemove() {
+  onCommentRemove(res) {
     console.log('comment removed')
+    console.log(res)
   }
 
   render() {
