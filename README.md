@@ -14,4 +14,6 @@
   10) FbEmbeddedPost
   11) FbEmbeddedComments
   12) FbEmbeddedVideo
+  13) FbInteractiveLike
+  14) FbInteractiveComments
   
