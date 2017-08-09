@@ -12,33 +12,35 @@ export default class FbInteractiveComments extends React.Component {
         this.state = {
             fbInitialized: false
         }
-        this.finished_rendering = this.finished_rendering.bind(this);
-        this.comment_create = this.comment_create.bind(this);
-        this.comment_remove = this.comment_remove.bind(this);
+        this.finishedRendering = this.finishedRendering.bind(this);
+        this.commentCreate = this.commentCreate.bind(this);
+        this.commentRemove = this.commentRemove.bind(this);
     }
 
     componentDidMount() {
         initializeFb(this,this.props.appId,this.props.apiVersion);
-        
     }
 
-    finished_rendering() {
+    finishedRendering() {
         console.log('finished_rendering');
+        this.props.onFinishedRendering();
     }
 
-    comment_create() {
+    commentCreate() {
         console.log('comment_create');
+        this.props.onCommentCreate();
     }
 
-    comment_remove() {
+    commentRemove() {
         console.log('comment_remove');
+        this.props.onCommentRemove();
     }
 
     render() {
         if(this.state.fbInitialized) {
-            this.fb.Event.subscribe('xfbml.render',this.finished_rendering);
-            this.fb.Event.subscribe('comment.create',this.comment_create);
-            this.fb.Event.subscribe('comment.remove',this.comment_remove);
+            this.fb.Event.subscribe('xfbml.render',this.finishedRendering);
+            this.fb.Event.subscribe('comment.create',this.commentCreate);
+            this.fb.Event.subscribe('comment.remove',this.commentRemove);
             return (
                 <FbComments appId={this.props.appId} apiVersion={this.props.apiVersion} urL={this.props.urL} isNotChild={false}/>
             );

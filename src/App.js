@@ -23,6 +23,9 @@ class App extends Component {
       loginSuccessful: false
     }
     this.loggedIn = this.loggedIn.bind(this);
+    this.onFinishedRendering = this.onFinishedRendering.bind(this);
+    this.onCommentCreate = this.onCommentCreate.bind(this);
+    this.onCommentRemove = this.onCommentRemove.bind(this);
   }
 
   loggedIn(res) {
@@ -31,11 +34,23 @@ class App extends Component {
     //this.setState({loginSuccessful: true});
   }
 
+  onFinishedRendering() {
+    console.log('finished rendering')
+  }
+
+  onCommentCreate() {
+    console.log('comment created');
+  }
+
+  onCommentRemove() {
+    console.log('comment removed')
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Facebook follow</h1>
-        <FbInteractiveComments isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/comments#configurator'/>
+        <FbInteractiveComments isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/comments#configurator' onFinishedRendering={this.onFinishedRendering} onCommentCreate={this.onCommentCreate} onCommentRemove={this.onCommentRemove}/>
       </div>
     );
   }
