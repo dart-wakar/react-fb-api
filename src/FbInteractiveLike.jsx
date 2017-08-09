@@ -1,8 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import FbLike from './FbLike';
 
 import initilaizeFb from './utils/initializeFb';
+
+const propTypes = {
+    appId: PropTypes.string.isRequired,
+    apiVersion: PropTypes.string.isRequired,
+    urL: PropTypes.string,
+    onFinishedRendering: PropTypes.func,
+    onLikeSuccessful: PropTypes.func,
+    onUnlikeSuccessful: PropTypes.func,
+    isNotChild: PropTypes.bool
+};
+
+const defaultProps = {
+    appId: null,
+    apiVersion: null,
+    urL: null,
+    onFinishedRendering() {},
+    onLikeSuccessful() {},
+    onUnlikeSuccessful() {},
+    isNotChild: true
+};
 
 export default class FbInteractiveLike extends React.Component {
 
@@ -21,19 +42,14 @@ export default class FbInteractiveLike extends React.Component {
     }
 
     finishedRendering() {
-        console.log('finished rendering');
         this.props.onFinishedRendering();
     }
 
     onLikeCallback(uRL,htmlElement) {
-        console.log(uRL);
-        console.log(htmlElement);
         this.props.onLikeSuccessful(uRL,htmlElement);
     }
 
     onUnlikeCallback(uRL,htmlElement) {
-        console.log(uRL);
-        console.log(htmlElement);
         this.props.onUnlikeSuccessful(uRL,htmlElement);
     }
 
@@ -51,3 +67,6 @@ export default class FbInteractiveLike extends React.Component {
         );
     }
 }
+
+FbInteractiveLike.propTypes = propTypes;
+FbInteractiveLike.defaultProps = defaultProps;
