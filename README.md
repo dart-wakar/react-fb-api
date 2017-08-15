@@ -16,4 +16,5 @@
   12) FbEmbeddedVideo
   13) FbInteractiveLike
   14) FbInteractiveComments
+  15) FbShareDialog
   
