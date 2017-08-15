@@ -17,4 +17,4 @@
   13) FbInteractiveLike
   14) FbInteractiveComments
   15) FbShareDialog
-  
+  16) FbFeedDialog
