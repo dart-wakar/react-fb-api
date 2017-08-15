@@ -14,7 +14,8 @@ import './App.css';
 //import FbEmbeddedPost from './FbEmbeddedPost';
 //import FbEmbeddedVideo from './FbEmbeddedVideo';
 //import FbInteractiveComments from './FbInteractiveComments';
-import FbInteractiveLike from './FbInteractiveLike';
+//import FbInteractiveLike from './FbInteractiveLike';
+import FbShareDialog from './FbShareDialog';
 
 class App extends Component {
 
@@ -24,9 +25,7 @@ class App extends Component {
       loginSuccessful: false
     }
     this.loggedIn = this.loggedIn.bind(this);
-    this.onFinishedRendering = this.onFinishedRendering.bind(this);
-    this.onLikeSuccessful = this.onLikeSuccessful.bind(this);
-    this.onUnlikeSuccessful = this.onUnlikeSuccessful.bind(this);
+    
   }
 
   loggedIn(res) {
@@ -35,27 +34,11 @@ class App extends Component {
     //this.setState({loginSuccessful: true});
   }
 
-  onFinishedRendering() {
-    console.log('finished rendering')
-  }
-
-  onLikeSuccessful(uRL,htmlElement) {
-    console.log('liked');
-    console.log(uRL);
-    console.log(htmlElement);
-  }
-
-  onUnlikeSuccessful(uRL,htmlElement) {
-    console.log('unliked')
-    console.log(uRL);
-    console.log(htmlElement);
-  }
-
   render() {
     return (
       <div className="App">
-        <h1>Facebook follow</h1>
-        <FbInteractiveLike isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/' onFinishedRendering={this.onFinishedRendering} onLikeSuccessful={this.onLikeSuccessful} onUnlikeSuccessful={this.onUnlikeSuccessful}/>
+        <h1>Facebook share dialog</h1>
+        <FbShareDialog isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/' buttonText='Share'/>
       </div>
     );
   }
