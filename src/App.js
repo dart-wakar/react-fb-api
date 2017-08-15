@@ -25,7 +25,7 @@ class App extends Component {
       loginSuccessful: false
     }
     this.loggedIn = this.loggedIn.bind(this);
-    
+    this.handleDialogResponse = this.handleDialogResponse.bind(this);
   }
 
   loggedIn(res) {
@@ -34,11 +34,15 @@ class App extends Component {
     //this.setState({loginSuccessful: true});
   }
 
+  handleDialogResponse(response) {
+    console.log(response);
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Facebook share dialog</h1>
-        <FbShareDialog isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/' buttonText='Share'/>
+        <FbShareDialog isNotChild={true} appId='300039560455517' apiVersion='v2.9' urL='https://developers.facebook.com/docs/plugins/' buttonText='Share' hashtag='#ggwp_my_nigga' quote='CSGO is OP!' handleResponse={this.handleDialogResponse}/>
       </div>
     );
   }

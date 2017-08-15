@@ -23,11 +23,14 @@ export default class FbShareDialog extends React.Component {
     }
 
     handleClick() {
+        var x = this;
         this.fb.ui({
             method: method,
-            href: this.props.urL
+            href: this.props.urL,
+            hashtag: this.props.hashtag,
+            quote: this.props.quote
         },function(response) {
-            console.log(response);
+            x.props.handleResponse(response);
         });
     }
 
