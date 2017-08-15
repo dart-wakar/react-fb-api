@@ -1,8 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import initializeFb from './utils/initializeFb';
 
 const method = 'share';
+
+const propTypes = {
+    appId: PropTypes.string.isRequired,
+    apiVersion: PropTypes.string.isRequired,
+    isNotChild: PropTypes.bool,
+    urL: PropTypes.string,
+    buttonText: PropTypes.string.isRequired,
+    hashtag: PropTypes.string,
+    quote: PropTypes.string,
+    handleResponse: PropTypes.func
+};
+
+const defaultProps = {
+    appId: null,
+    apiVersion: null,
+    buttonText: null,
+    isNotChild: true,
+    urL: null,
+    hashtag: null,
+    quote: null,
+    handleResponse() {}
+};
 
 export default class FbShareDialog extends React.Component {
     
@@ -45,3 +68,6 @@ export default class FbShareDialog extends React.Component {
         )
     }
 }
+
+FbShareDialog.propTypes = propTypes;
+FbShareDialog.defaultProps = defaultProps;
